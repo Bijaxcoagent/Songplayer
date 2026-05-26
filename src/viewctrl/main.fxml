@@ -7,15 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="452.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="/viewctrl/AudioPlayerController">
+<AnchorPane prefHeight="452.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewctrl.AudioPlayerController">
    <children>
-      <Label layoutX="26.0" layoutY="30.0" text="Time" />
-      <ProgressBar layoutX="71.0" layoutY="381.0" prefHeight="20.0" prefWidth="510.0" progress="0.0" />
-      <ImageView fitHeight="171.0" fitWidth="200.0" layoutX="89.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="376.0" layoutY="338.0" text="Songpassed/SongTime" />
-      <Button layoutX="501.0" layoutY="263.0" mnemonicParsing="false" text="Add Song" />
-      <Label layoutX="376.0" layoutY="310.0" text="SongTitel" />
-      <ListView layoutX="482.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="lblGlobalTime" layoutX="26.0" layoutY="30.0" text="Time" />
+      <ProgressBar fx:id="pbProgress" layoutX="71.0" layoutY="381.0" prefHeight="20.0" prefWidth="576.0" progress="0.0" />
+      <ImageView fx:id="ivImage" fitHeight="171.0" fitWidth="200.0" layoutX="71.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblSongTime" layoutX="376.0" layoutY="338.0" text="Songpassed/SongTime" />
+      <Button fx:id="btnAddSong" layoutX="498.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionAddSong" text="Add Song" />
+      <Label fx:id="lblSongTitle" layoutX="376.0" layoutY="310.0" text="SongTitel" />
+      <ListView fx:id="lvPlaylist" layoutX="498.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
