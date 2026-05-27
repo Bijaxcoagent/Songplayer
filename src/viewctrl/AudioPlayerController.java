@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import model.AudioPlayerModel;
+import model.Song;
 
 import java.net.URL;
 import java.util.ResourceBundle;
