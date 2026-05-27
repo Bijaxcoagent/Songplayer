@@ -10,12 +10,15 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import model.AudioPlayerModel;
 import model.Song;
+import main.Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AudioPlayerController implements Initializable {
     AudioPlayerModel apmodel;
+
+    private Main main;
 
     @FXML
     private Button btnAddSong;

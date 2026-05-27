@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    private static Scene scene;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -17,9 +19,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/viewctrl/main.fxml"));
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         primaryStage.setTitle("Audioplayer");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static void loadScene(String fxml) throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource(fxml));
+        scene.setRoot(root);
     }
 }
