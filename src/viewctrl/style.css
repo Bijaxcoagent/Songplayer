@@ -1,19 +1,13 @@
-/* Root-Stil für die gesamte Szene */
 .root {
-    -fx-background-color: #f0f0f0;
-    -fx-font-family: "Arial";
+    -fx-background-color: #000000;
+    -fx-font-family: "Monospace";
     -fx-font-size: 14px;
 }
 
-/* Buttons */
 .button {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #000000;
     -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-padding: 10px 20px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 1);
+    -fx-border-color: #FFFFFF;
 }
 
 .button:hover {
@@ -24,13 +18,11 @@
     -fx-background-color: #357a38;
 }
 
-/* Labels */
 .label {
     -fx-text-fill: #333333;
     -fx-font-size: 16px;
 }
 
-/* TextFields */
 .text-field {
     -fx-background-color: white;
     -fx-border-color: #cccccc;
@@ -43,7 +35,6 @@
     -fx-border-width: 2px;
 }
 
-/* CheckBox */
 .check-box {
     -fx-text-fill: #333333;
 }
@@ -52,7 +43,6 @@
     -fx-text-fill: #4CAF50;
 }
 
-/* ComboBox */
 .combo-box {
     -fx-background-color: white;
     -fx-border-color: #cccccc;
@@ -64,13 +54,11 @@
     -fx-border-width: 2px;
 }
 
-/* ScrollPane */
 .scroll-pane {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
 
-/* TableView */
 .table-view {
     -fx-background-color: white;
     -fx-border-color: #cccccc;

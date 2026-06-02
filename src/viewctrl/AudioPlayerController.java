@@ -1,5 +1,6 @@
 package viewctrl;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,12 +15,14 @@ import main.Main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AudioPlayerController implements Initializable {
-    AudioPlayerModel apmodel;
-
+    private AudioPlayerModel apmodel;
     private Main main;
+    private AnimationTimer clockTimer;
+    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     @FXML
     private Button btnAddSong;
@@ -28,7 +31,7 @@ public class AudioPlayerController implements Initializable {
     private ImageView ivImage;
 
     @FXML
-    private Label lblGlobalTime;
+    private Label lblLocalTime;
 
     @FXML
     private Label lblSongTime;
@@ -46,7 +49,6 @@ public class AudioPlayerController implements Initializable {
     void actionAddSong(ActionEvent event) throws IOException {
         Main.loadScene("/viewctrl/songAdd.fxml");
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
