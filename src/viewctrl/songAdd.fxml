@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="viewctrl.AudioPlayerControllerSecondScene"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="452.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewctrl.AudioPlayerControllerADD">
+   <children>
+      <TextField fx:id="tfPath" layoutX="154.0" layoutY="112.0" prefHeight="26.0" prefWidth="498.0" />
+      <Label fx:id="lblPath" layoutX="46.0" layoutY="112.0" prefHeight="26.0" prefWidth="30.0" text="Pfad:" />
+      <Button fx:id="btnPath" layoutX="660.0" layoutY="112.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="..." />
+      <Label fx:id="lblTitle" layoutX="44.0" layoutY="35.0" prefHeight="56.0" prefWidth="284.0" text="Wählen Sie einen Song">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblName" layoutX="49.0" layoutY="208.0" text="Name:" />
+      <TextField fx:id="tfName" layoutX="154.0" layoutY="204.0" prefHeight="26.0" prefWidth="284.0" />
+      <Button fx:id="btnCancel" layoutX="154.0" layoutY="363.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Abbrechen" />
+      <Label fx:id="lblPlaylist" layoutX="611.0" layoutY="208.0" text="Playlist:" />
+      <CheckBox fx:id="cbInPlaylist" layoutX="660.0" layoutY="209.0" mnemonicParsing="false" />
+      <Label fx:id="lblDir" layoutX="46.0" layoutY="162.0" text="Ordner:" />
+      <TextField fx:id="tfDir" layoutX="153.0" layoutY="158.0" prefHeight="26.0" prefWidth="498.0" />
+      <Button fx:id="btnDir" layoutX="660.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="..." />
+      <Button fx:id="btnChoose" layoutX="49.0" layoutY="363.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Auswählen" />
+   </children>
 </AnchorPane>
