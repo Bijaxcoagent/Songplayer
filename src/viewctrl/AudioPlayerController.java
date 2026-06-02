@@ -12,6 +12,7 @@ import model.AudioPlayerModel;
 import model.Song;
 import main.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,13 +43,13 @@ public class AudioPlayerController implements Initializable {
     private ProgressBar pbProgress;
 
     @FXML
-    void actionAddSong(ActionEvent event) {
-
+    void actionAddSong(ActionEvent event) throws IOException {
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         apmodel = new AudioPlayerModel();
+        main = new Main();
     }
 }

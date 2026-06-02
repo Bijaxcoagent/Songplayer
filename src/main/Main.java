@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource("/viewctrl/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/viewctrl/main.fxml"));
         scene = new Scene(root);
         primaryStage.setTitle("Audioplayer");
         primaryStage.setScene(scene);
@@ -26,7 +26,7 @@ public class Main extends Application {
     }
 
     public static void loadScene(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource(fxml));
+        Parent root = FXMLLoader.load(Main.class.getResource("viewctrl/main.fxml"));
         scene.setRoot(root);
     }
 }
