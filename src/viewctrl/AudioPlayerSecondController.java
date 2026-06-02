@@ -1,16 +1,22 @@
 package viewctrl;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import main.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import model.AudioPlayerModel;
 
 public class AudioPlayerSecondController implements Initializable {
+
+    private AudioPlayerModel model;
 
     @FXML
     private Button btnCancel;
@@ -29,6 +35,9 @@ public class AudioPlayerSecondController implements Initializable {
 
     @FXML
     private Label lblDir;
+
+    @FXML
+    private Label lblError;
 
     @FXML
     private Label lblName;
@@ -51,7 +60,28 @@ public class AudioPlayerSecondController implements Initializable {
     @FXML
     private TextField tfPath;
 
+    @FXML
+    void actionCancel(ActionEvent event) throws IOException {
+        Main.loadScene("/viewctrl/main.fxml");
+
+    }
+
+    @FXML
+    void actionChoose(ActionEvent event) {
+        String directory = tfDir.getText();
+        String nameSong = tfName.getText();
+        String path = tfPath.getText();
+
+        if (directory.isEmpty() || nameSong.isEmpty() || path.isEmpty()){
+            lblError.setText("Bitte geben Sie die benötigten Daten an!");
+        }
+        else{
+            model.getData(path, directory, nameSong);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model = new AudioPlayerModel();
     }
 }

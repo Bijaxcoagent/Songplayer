@@ -40,7 +40,7 @@ public class AudioPlayerController implements Initializable {
     private Label lblSongTitle;
 
     @FXML
-    private ListView<Song> lvPlaylist;
+    private ListView<String> lvPlaylist;
 
     @FXML
     private ProgressBar pbProgress;
