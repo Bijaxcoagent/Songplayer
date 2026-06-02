@@ -2,7 +2,7 @@ package model;
 
 public class FileHandler {
 
-    public void addSong(){
+    public void getSongFile(String pfad, String pfadDir){
 
     }
 
