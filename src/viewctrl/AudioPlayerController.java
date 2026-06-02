@@ -44,12 +44,12 @@ public class AudioPlayerController implements Initializable {
 
     @FXML
     void actionAddSong(ActionEvent event) throws IOException {
+        Main.loadScene("/viewctrl/songAdd.fxml");
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         apmodel = new AudioPlayerModel();
-        main = new Main();
     }
 }
