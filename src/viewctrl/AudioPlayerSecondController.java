@@ -86,7 +86,6 @@ public class AudioPlayerSecondController implements Initializable {
             lblError.setText("Es wurden keine MP3-Dateien ausgewählt!");
         }
         else{
-            model.getData(path, directory, nameSong);
         }
     }
 
