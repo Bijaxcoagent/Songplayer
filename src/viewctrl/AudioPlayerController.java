@@ -1,6 +1,7 @@
 package viewctrl;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -125,7 +126,7 @@ public class AudioPlayerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lvPlaylist.setItems(apmodel.getSongs());
+        Platform.runLater(() -> lvPlaylist.setItems(apmodel.getSongs()));
 
         apmodel = new AudioPlayerModel();
     }
