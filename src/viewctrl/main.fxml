@@ -16,7 +16,7 @@
         <Button fx:id="btnAddSong" layoutX="498.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionAddSong" text="Add Song" />
         <Label fx:id="lblSongTitle" layoutX="373.0" layoutY="285.0" text="SongTitle" />
         <ListView fx:id="lvPlaylist" layoutX="498.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="316.0" layoutY="389.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="40.0" text="||" />
+      <Button fx:id="btnPlaySong" layoutX="316.0" layoutY="389.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="40.0" text="||" />
       <Button layoutX="373.0" layoutY="389.0" mnemonicParsing="false" text="&gt;&gt;" />
       <Button layoutX="258.0" layoutY="389.0" mnemonicParsing="false" text="&lt;&lt;" />
       <Label fx:id="lblSongArtist" layoutX="373.0" layoutY="260.0" text="SongArtist" />

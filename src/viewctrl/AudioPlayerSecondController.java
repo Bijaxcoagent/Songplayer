@@ -76,7 +76,6 @@ public class AudioPlayerSecondController implements Initializable {
             lblError.setText("Bitte geben Sie die benötigten Daten an!");
         }
         else{
-            model.getData(path, directory, nameSong);
         }
     }
 
