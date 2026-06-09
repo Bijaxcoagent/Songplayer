@@ -1,13 +1,9 @@
 package viewctrl;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import model.AudioPlayerModel;
 import model.Song;
@@ -34,24 +30,37 @@ public class AudioPlayerController implements Initializable {
     private Label lblLocalTime;
 
     @FXML
+    private Label lblSongAlbum;
+
+    @FXML
+    private Label lblSongArtist;
+
+    @FXML
     private Label lblSongTime;
 
     @FXML
     private Label lblSongTitle;
 
     @FXML
-    private ListView<String> lvPlaylist;
+    private ListView<Song> lvPlaylist;
 
     @FXML
     private ProgressBar pbProgress;
 
     @FXML
-    void actionAddSong(ActionEvent event) throws IOException {
+    void actionAddSong() throws IOException {
         Main.loadScene("/viewctrl/songAdd.fxml");
+    }
+
+    @FXML
+    void actionNext() {
+        apmodel.next();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        lvPlaylist.setItems(apmodel.getSongs());
+
         apmodel = new AudioPlayerModel();
     }
 }
