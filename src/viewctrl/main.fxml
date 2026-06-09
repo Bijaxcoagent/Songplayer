@@ -14,10 +14,12 @@
         <ImageView fx:id="ivImage" fitHeight="171.0" fitWidth="200.0" layoutX="71.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="lblSongTime" layoutX="373.0" layoutY="313.0" text="Songpassed/SongTime" />
         <Button fx:id="btnAddSong" layoutX="498.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionAddSong" text="Add Song" />
-        <Label fx:id="lblSongTitle" layoutX="373.0" layoutY="285.0" text="SongTitel" />
+        <Label fx:id="lblSongTitle" layoutX="373.0" layoutY="285.0" text="SongTitle" />
         <ListView fx:id="lvPlaylist" layoutX="498.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="322.0" layoutY="389.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="40.0" text="||" />
+      <Button layoutX="316.0" layoutY="389.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="40.0" text="||" />
       <Button layoutX="373.0" layoutY="389.0" mnemonicParsing="false" text="&gt;&gt;" />
       <Button layoutX="258.0" layoutY="389.0" mnemonicParsing="false" text="&lt;&lt;" />
+      <Label fx:id="lblSongArtist" layoutX="373.0" layoutY="260.0" text="SongArtist" />
+      <Label fx:id="lblSongAlbum" layoutX="373.0" layoutY="230.0" text="SongAlbum" />
     </children>
 </AnchorPane>
