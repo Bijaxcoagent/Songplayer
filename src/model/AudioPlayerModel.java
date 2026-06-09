@@ -13,4 +13,14 @@ public class AudioPlayerModel {
         fh.getSongFile(pfad, pfadDir);
         liste.add(name);
     }
+
+    public String chooseFile(){
+        fh.chooseFile();
+        return fh.getFilePath();
+    }
+
+    public String chooseDirectory(){
+        fh.chooseDirectory();
+        return fh.getFileDir();
+    }
 }

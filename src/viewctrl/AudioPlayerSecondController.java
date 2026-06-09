@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import model.AudioPlayerModel;
+import model.FileHandler;
 
 public class AudioPlayerSecondController implements Initializable {
 
@@ -63,7 +64,16 @@ public class AudioPlayerSecondController implements Initializable {
     @FXML
     void actionCancel(ActionEvent event) throws IOException {
         Main.loadScene("/viewctrl/main.fxml");
+    }
 
+    @FXML
+    void actionDir(ActionEvent event) {
+        tfDir.setText(model.chooseDirectory());
+    }
+
+    @FXML
+    void actionPath(ActionEvent event) {
+        tfPath.setText(model.chooseFile());
     }
 
     @FXML
@@ -72,8 +82,8 @@ public class AudioPlayerSecondController implements Initializable {
         String nameSong = tfName.getText();
         String path = tfPath.getText();
 
-        if (directory.isEmpty() || nameSong.isEmpty() || path.isEmpty()){
-            lblError.setText("Bitte geben Sie die benötigten Daten an!");
+        if (directory.isEmpty() && path.isEmpty()){
+            lblError.setText("Es wurden keine MP3-Dateien ausgewählt!");
         }
         else{
             model.getData(path, directory, nameSong);
