@@ -13,12 +13,12 @@ public class AudioPlayerModel {
     private ObservableList<Song> songs = FXCollections.observableArrayList();
     private MediaPlayer mediaPlayer;
     private int currentIndex = -1;
+    private FileHandler fh;
 
     public void addSong(Song song) {
         songs.add(song);
     }
 
-<<<<<<< HEAD
     public String chooseFile(){
         fh.chooseFile();
         return fh.getFilePath();
@@ -28,8 +28,7 @@ public class AudioPlayerModel {
         fh.chooseDirectory();
         return fh.getFileDir();
     }
-}
-=======
+
     public ObservableList<Song> getSongs() {
         return songs;
     }
@@ -100,4 +99,3 @@ public class AudioPlayerModel {
         return total != null ? total.toSeconds() : 1;
     }
 }
->>>>>>> 7f7c4692ddc196bdfeb1d299c9b9c65f55940f36
