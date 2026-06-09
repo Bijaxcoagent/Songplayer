@@ -5,7 +5,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class FileHandler {
+public class PlayerFileHandler {
     private String filePath;
     private String fileDir;
 

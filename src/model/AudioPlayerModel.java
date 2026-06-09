@@ -13,7 +13,7 @@ public class AudioPlayerModel {
     private ObservableList<Song> songs = FXCollections.observableArrayList();
     private MediaPlayer mediaPlayer;
     private int currentIndex = -1;
-    private FileHandler fh;
+    private PlayerFileHandler fh = new PlayerFileHandler();
 
     public void addSong(Song song) {
         songs.add(song);

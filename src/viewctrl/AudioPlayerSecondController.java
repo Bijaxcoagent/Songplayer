@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import model.AudioPlayerModel;
-import model.FileHandler;
 
 public class AudioPlayerSecondController implements Initializable {
 
@@ -84,8 +83,6 @@ public class AudioPlayerSecondController implements Initializable {
 
         if (directory.isEmpty() && path.isEmpty()){
             lblError.setText("Es wurden keine MP3-Dateien ausgewählt!");
-        }
-        else{
         }
     }
 
