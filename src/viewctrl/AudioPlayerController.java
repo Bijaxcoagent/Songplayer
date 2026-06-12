@@ -2,6 +2,7 @@ package viewctrl;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -55,6 +56,23 @@ public class AudioPlayerController implements Initializable {
     private ProgressBar pbProgress;
 
     @FXML
+    void actionPlayPause() {
+        if (apmodel.getMediaPlayer() == null) {
+            return;
+        }
+
+        if (isPlaying) {
+            apmodel.pause();
+            btnPlaySong.setText("▶");
+        } else {
+            apmodel.play();
+            btnPlaySong.setText("⏸");
+        }
+
+        isPlaying = !isPlaying;
+    }
+
+    @FXML
     void actionAddSong() throws IOException {
         Main.loadScene("/viewctrl/songAdd.fxml");
     }
@@ -65,15 +83,18 @@ public class AudioPlayerController implements Initializable {
     }
 
     @FXML
-    void actionPrev() {
-        apmodel.previous();
-        updateSongInfo();
-        isPlaying = true;
-        btnPlaySong.setText("⏸");
-    }
-
-    public void addSong(Song song) {
-        apmodel.addSong(song);
+    void actionPrevNext(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        switch(btn.getId()) {
+            case "btnPrev":
+                apmodel.previous();
+                updateSongInfo();
+                break;
+            case "btnNext":
+                apmodel.next();
+                updateSongInfo();
+                break;
+        }
     }
 
     private void playSongAt(int index) {
@@ -97,6 +118,8 @@ public class AudioPlayerController implements Initializable {
 
         if (song.getImage() != null) {
             ivImage.setImage(song.getImage());
+        } else {
+            ivImage.setImage(new Image("/Songs/default_album_art.png"));
         }
 
         lvPlaylist.getSelectionModel().select(index);
@@ -109,7 +132,7 @@ public class AudioPlayerController implements Initializable {
                 lblLocalTime.setText(LocalTime.now().format(timeFormatter));
 
                 double current = apmodel.getCurrentTime();
-                double total   = apmodel.getTotalTime();
+                double total = apmodel.getTotalTime();
 
                 pbProgress.setProgress(total > 0 ? current / total : 0);
                 lblSongTime.setText(formatTime(current) + " / " + formatTime(total));
@@ -126,8 +149,11 @@ public class AudioPlayerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(() -> lvPlaylist.setItems(apmodel.getSongs()));
-
         apmodel = new AudioPlayerModel();
+
+        lvPlaylist.setItems(apmodel.getSongs());
+
+        startClock();
+        clockTimer.start();
     }
 }

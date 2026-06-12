@@ -40,7 +40,7 @@ public class Song {
 
     public String getFormattedDuration() {
         if (duration == null) return "0:00";
-        int total   = (int) duration.toSeconds();
+        int total = (int) getDuration().toSeconds();
         int minutes = total / 60;
         int seconds = total % 60;
         return String.format("%d:%02d", minutes, seconds);
@@ -48,6 +48,6 @@ public class Song {
 
     @Override
     public String toString() {
-        return title + " - " + artist;
+        return getTitle() + " - " + getArtist();
     }
 }
