@@ -32,18 +32,16 @@ public class Song {
         return image;
     }
 
-    public String getArtist() { return artist;}
+    public String getArtist() {
+        return artist;
+    }
 
-    public String getAlbum() { return album;}
+    public String getAlbum() {
+        return album;
+    }
 
-    public String getFilepath() { return filepath;}
-
-    public String getFormattedDuration() {
-        if (duration == null) return "0:00";
-        int total = (int) getDuration().toSeconds();
-        int minutes = total / 60;
-        int seconds = total % 60;
-        return String.format("%d:%02d", minutes, seconds);
+    public String getFilepath() {
+        return filepath;
     }
 
     @Override

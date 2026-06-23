@@ -3,7 +3,6 @@ package viewctrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,71 +17,35 @@ public class AudioPlayerSecondController implements Initializable {
 
     private AudioPlayerModel model;
 
-    @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnChoose;
-
-    @FXML
-    private Button btnDir;
-
-    @FXML
-    private Button btnPath;
-
-    @FXML
-    private Label lblDir;
-
-    @FXML
-    private Label lblError;
-
-    @FXML
-    private Label lblName;
-
-    @FXML
-    private Label lblPath;
-
-    @FXML
-    private Label lblTitle;
-
-    @FXML
-    private TextField tfDir;
-
-    @FXML
-    private TextField tfName;
-
-    @FXML
-    private TextField tfPath;
+    @FXML private Button btnCancel;
+    @FXML private TextField tfDir;
+    @FXML private TextField tfName;
+    @FXML private TextField tfPath;
+    @FXML private Label lblError;
 
     @FXML
     void actionPath(ActionEvent event) {
         String path = model.chooseFile();
-        if (!path.isEmpty()) {
-            tfPath.setText(path);
-        }
+        if (!path.isEmpty()) tfPath.setText(path);
     }
 
     @FXML
     void actionDir(ActionEvent event) {
         String dir = model.chooseDirectory();
-        if (!dir.isEmpty()) {
-            tfDir.setText(dir);
-        }
+        if (!dir.isEmpty()) tfDir.setText(dir);
     }
 
     @FXML
     void actionChoose(ActionEvent event) throws IOException {
-
         boolean success = model.addSelectedItems(tfName.getText());
+
         if (success) {
             lblError.setText("Song(s) erfolgreich hinzugefügt.");
             tfPath.clear();
             tfDir.clear();
             tfName.clear();
-
             Main.loadScene("/viewctrl/main.fxml");
-        }
-        else {
+        } else {
             lblError.setText("Bitte zuerst eine Datei oder einen Ordner auswählen.");
         }
     }
@@ -95,6 +58,5 @@ public class AudioPlayerSecondController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model = AudioPlayerModel.getInstance();
-
     }
 }
