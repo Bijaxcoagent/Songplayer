@@ -18,7 +18,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AudioPlayerController implements Initializable {
-    private AudioPlayerModel apmodel;
+    private AudioPlayerModel model;
+
     private boolean isPlaying = false;
     private Main main;
     private AnimationTimer clockTimer;
@@ -61,25 +62,25 @@ public class AudioPlayerController implements Initializable {
 
     @FXML
     void actionNext() {
-        apmodel.next();
+        model.next();
     }
 
     @FXML
     void actionPrev() {
-        apmodel.previous();
+        model.previous();
         updateSongInfo();
         isPlaying = true;
         btnPlaySong.setText("⏸");
     }
 
     public void addSong(Song song) {
-        apmodel.addSong(song);
+        model.addSong(song);
     }
 
     private void playSongAt(int index) {
-        apmodel.playSongAt(index);
+        model.playSongAt(index);
 
-        apmodel.getMediaPlayer().setOnEndOfMedia(this::actionNext);
+        model.getMediaPlayer().setOnEndOfMedia(this::actionNext);
 
         updateSongInfo();
         isPlaying = true;
@@ -87,10 +88,10 @@ public class AudioPlayerController implements Initializable {
     }
 
     private void updateSongInfo() {
-        int index = apmodel.getCurrentIndex();
+        int index = model.getCurrentIndex();
         if (index < 0) return;
 
-        Song song = apmodel.getSongAt(index);
+        Song song = model.getSongAt(index);
         lblSongTitle.setText(song.getTitle());
         lblSongArtist.setText(song.getArtist());
         lblSongAlbum.setText(song.getAlbum());
@@ -108,8 +109,8 @@ public class AudioPlayerController implements Initializable {
             public void handle(long now) {
                 lblLocalTime.setText(LocalTime.now().format(timeFormatter));
 
-                double current = apmodel.getCurrentTime();
-                double total   = apmodel.getTotalTime();
+                double current = model.getCurrentTime();
+                double total   = model.getTotalTime();
 
                 pbProgress.setProgress(total > 0 ? current / total : 0);
                 lblSongTime.setText(formatTime(current) + " / " + formatTime(total));
@@ -126,8 +127,8 @@ public class AudioPlayerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(() -> lvPlaylist.setItems(apmodel.getSongs()));
-
-        apmodel = new AudioPlayerModel();
+        Platform.runLater(() -> lvPlaylist.setItems(model.getSongs()));
+        model = AudioPlayerModel.getInstance();
+        lvPlaylist.setItems(model.getSongs());
     }
 }
