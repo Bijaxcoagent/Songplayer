@@ -116,6 +116,7 @@ public class AudioPlayerController implements Initializable {
                 lblSongTime.setText(formatTime(current) + " / " + formatTime(total));
             }
         };
+        clockTimer.start();
     }
 
     private String formatTime(double seconds) {
@@ -130,5 +131,6 @@ public class AudioPlayerController implements Initializable {
         Platform.runLater(() -> lvPlaylist.setItems(model.getSongs()));
         model = AudioPlayerModel.getInstance();
         lvPlaylist.setItems(model.getSongs());
+        startClock();
     }
 }
