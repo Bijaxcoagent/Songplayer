@@ -5,7 +5,7 @@
 }
 
 .button {
-    -fx-background-color: #000000;
+    -fx-background-color: black;
     -fx-text-fill: white;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .label {
-    -fx-text-fill: #333333;
+    -fx-text-fill: white;
     -fx-font-size: 16px;
 }
 
@@ -35,11 +35,11 @@
 }
 
 .check-box {
-    -fx-text-fill: #333333;
+    -fx-text-fill: white;
 }
 
 .check-box:selected {
-    -fx-text-fill: #4CAF50;
+    -fx-text-fill: white;
 }
 
 .combo-box {
@@ -74,7 +74,7 @@
 }
 
 .list-view {
-    -fx-background-color: white;
+    -fx-background-color: black;
     -fx-border-color: #cccccc;
 }
 
