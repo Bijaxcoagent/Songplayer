@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Main;
@@ -18,7 +19,31 @@ public class AudioPlayerSecondController implements Initializable {
     private AudioPlayerModel model;
 
     @FXML
-    private TextField tfPath;
+    private Button btnCancel;
+
+    @FXML
+    private Button btnChoose;
+
+    @FXML
+    private Button btnDir;
+
+    @FXML
+    private Button btnPath;
+
+    @FXML
+    private Label lblDir;
+
+    @FXML
+    private Label lblError;
+
+    @FXML
+    private Label lblName;
+
+    @FXML
+    private Label lblPath;
+
+    @FXML
+    private Label lblTitle;
 
     @FXML
     private TextField tfDir;
@@ -27,7 +52,7 @@ public class AudioPlayerSecondController implements Initializable {
     private TextField tfName;
 
     @FXML
-    private Label lblError;
+    private TextField tfPath;
 
     @FXML
     void actionPath(ActionEvent event) {

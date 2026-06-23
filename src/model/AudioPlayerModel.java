@@ -26,6 +26,7 @@ public class AudioPlayerModel {
     private PlayerFileHandler fh = new PlayerFileHandler();
     private File selectedFile;
     private File selectedDirectory;
+    private MediaPlayer player;
 
     public ObservableList<Song> getSongs() {
         return songs;
@@ -82,6 +83,12 @@ public class AudioPlayerModel {
         selectedFile = null;
         selectedDirectory = null;
         return added;
+    }
+
+    public void play(String path) {
+        Media media = new Media(new File(path).toURI().toString());
+        player = new MediaPlayer(media);
+        player.play();
     }
 
 
