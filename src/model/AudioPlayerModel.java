@@ -5,75 +5,55 @@ import javafx.collections.ObservableList;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
 import java.io.File;
 
 public class AudioPlayerModel {
 
-    private static final AudioPlayerModel instance =
-            new AudioPlayerModel();
+    private static final AudioPlayerModel instance = new AudioPlayerModel();
+    public static AudioPlayerModel getInstance() { return instance; }
 
-    public static AudioPlayerModel getInstance() {
-        return instance;
-    }
-
-    private AudioPlayerModel() {
-    }
-
-    private ObservableList<Song> songs = FXCollections.observableArrayList();
+    private final ObservableList<Song> songs = FXCollections.observableArrayList();
     private MediaPlayer mediaPlayer;
     private int currentIndex = -1;
-    private PlayerFileHandler fh = new PlayerFileHandler();
+    private final PlayerFileHandler fh = new PlayerFileHandler();
     private File selectedFile;
     private File selectedDirectory;
-    private MediaPlayer player;
 
-    public ObservableList<Song> getSongs() {
-        return songs;
-    }
-
-    public void addSong(Song song) {
-        songs.add(song);
-    }
+    public ObservableList<Song> getSongs() { return songs; }
+    public void addSong(Song song) { songs.add(song); }
+    public Song getSongAt(int index) { return songs.get(index); }
+    public int getSongCount() { return songs.size(); }
+    public int getCurrentIndex() { return currentIndex; }
+    public MediaPlayer getMediaPlayer() { return mediaPlayer; }
 
     public String chooseFile() {
         selectedFile = fh.chooseFile();
-        if (selectedFile == null) {
-            return "";
-        }
-
-        return selectedFile.getAbsolutePath();
+        return selectedFile != null ? selectedFile.getAbsolutePath() : "";
     }
 
     public String chooseDirectory() {
         selectedDirectory = fh.chooseDirectory();
-        if (selectedDirectory == null) {
-            return "";
-        }
-
-        return selectedDirectory.getAbsolutePath();
+        return selectedDirectory != null ? selectedDirectory.getAbsolutePath() : "";
     }
 
     public boolean addSelectedItems(String songName) {
         boolean added = false;
 
         if (selectedFile != null) {
-            if (songName == null || songName.isEmpty()) {
+            if (songName == null || songName.isEmpty())
                 songName = selectedFile.getName();
-            }
-
-            Song song = new Song(songName, null, null, "Unbekannt", "Unbekannt", selectedFile.getAbsolutePath());
-            songs.add(song);
+            songs.add(new Song(songName, null, null, "Unbekannt", "Unbekannt",
+                    selectedFile.getAbsolutePath()));
             added = true;
         }
 
         if (selectedDirectory != null) {
             File[] files = selectedDirectory.listFiles();
             if (files != null) {
-                for (File file : files) {
-                    if (file.isFile() && file.getName().toLowerCase().endsWith(".mp3")) {
-                        Song song = new Song(file.getName(), null, null, "Unbekannt", "Unbekannt", file.getAbsolutePath());
-                        songs.add(song);
+                for (File f : files) {
+                    if (f.isFile() && f.getName().toLowerCase().endsWith(".mp3")) {
+                        songs.add(new Song(f.getName(), null, null, "Unbekannt", "Unbekannt",
+                                f.getAbsolutePath()));
                         added = true;
                     }
                 }
@@ -85,31 +65,8 @@ public class AudioPlayerModel {
         return added;
     }
 
-    public void play(String path) {
-        Media media = new Media(new File(path).toURI().toString());
-        player = new MediaPlayer(media);
-        player.play();
-    }
-
-
-
-
-
-
-
-
-
-
-
-    public Song getSongAt(int index) {
-        return songs.get(index);
-    }
-
-    public int getSongCount() {
-        return songs.size();
-    }
-
     public void playSongAt(int index) {
+        if (index < 0 || index >= songs.size()) return; // FIX: Bounds-Check
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -117,28 +74,14 @@ public class AudioPlayerModel {
         }
 
         currentIndex = index;
-
-        Song song = songs.get(index);
-
-        Media media = new Media(new File(song.getFilepath()).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
+        String path = songs.get(index).getFilepath();
+        mediaPlayer = new MediaPlayer(new Media(new File(path).toURI().toString()));
         mediaPlayer.play();
     }
 
-    public void play() {
-        if (mediaPlayer != null)
-            mediaPlayer.play();
-    }
-
-    public void pause() {
-        if (mediaPlayer != null)
-            mediaPlayer.pause();
-    }
-
-    public void stop() {
-        if (mediaPlayer != null)
-            mediaPlayer.stop();
-    }
+    public void play() { if (mediaPlayer != null) mediaPlayer.play(); }
+    public void pause() { if (mediaPlayer != null) mediaPlayer.pause(); }
+    public void stop() { if (mediaPlayer != null) mediaPlayer.stop(); }
 
     public void next() {
         if (currentIndex < songs.size() - 1)
@@ -155,36 +98,18 @@ public class AudioPlayerModel {
             mediaPlayer.seek(Duration.seconds(seconds));
     }
 
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
-
-    public int getCurrentIndex() {
-        return currentIndex;
-    }
-
     public boolean isPlaying() {
-
-        return mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+        return mediaPlayer != null &&
+                mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
     }
 
     public double getCurrentTime() {
-
-        if (mediaPlayer == null)
-            return 0;
-
-        return mediaPlayer
-                .getCurrentTime()
-                .toSeconds();
+        return mediaPlayer != null ? mediaPlayer.getCurrentTime().toSeconds() : 0;
     }
 
     public double getTotalTime() {
-
-        if (mediaPlayer == null)
-            return 1;
-
-        Duration total = mediaPlayer.getTotalDuration();
-
-        return total != null ? total.toSeconds() : 1;
+        if (mediaPlayer == null) return 1;
+        Duration d = mediaPlayer.getTotalDuration();
+        return d != null ? d.toSeconds() : 1;
     }
 }
